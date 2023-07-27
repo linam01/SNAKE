@@ -183,6 +183,7 @@ void sauvegarde_partie(int grille[][GRILLE_HAUTEUR],Serpent *serpent,Pomme *pomm
   FILE* fichier=NULL;
   char nom_fichier[24];
   sprintf(nom_fichier,"%c_sauvegarde_partie.bin",i);
+  
   printf("SAUV dans : <%s>\n",nom_fichier);
   fichier=fopen(nom_fichier,"wb");
   if(fichier==NULL){
@@ -220,7 +221,6 @@ void chargement_score(Score *score){
   }
   fclose(fichier);
 }
-
 void chargement_partie(int grille[][GRILLE_HAUTEUR],Serpent *serpent,Pomme *pomme, char i){
   FILE* fichier=NULL;
   char nom_fichier[24];
@@ -251,6 +251,7 @@ void score_(Score *score){
   int i;
   score->score++;
   if(score->score > score->m_score[0]){
+    //
     for(i=9;i>0;i--){
       score->m_score[i] = score->m_score[i-1];
     }
@@ -274,19 +275,19 @@ void afficher_text_jeux(Score *score,char *nom){
 }
 
 /*
-  void niveau(int niveau,Score *score,Piege *piege,int grille[][GRILLE_HAUTEUR]){
+void niveau(int niveau,Score *score,Piege *piege,int grille[][GRILLE_HAUTEUR]){
   int i,j;
   if(score->score==3){
-  do{
-  i=rand()%GRILLE_LARGEUR;
-  j=rand()%GRILLE_HAUTEUR;
-  }while(Grille[i][j] != VIDE);
-  piege->posX=i;
-  piege->posY=j;
-  grille[i][j]= BORDURE;
-  // return *piege;
+    do{
+      i=rand()%GRILLE_LARGEUR;
+      j=rand()%GRILLE_HAUTEUR;
+    }while(Grille[i][j] != VIDE);
+    piege->posX=i;
+    piege->posY=j;
+    grille[i][j]= BORDURE;
+    // return *piege;
   }
-  }
+}
 */
 
 void jeux(int grille[][GRILLE_HAUTEUR],Serpent *serpent,Pomme *pomme,Score *score){
@@ -341,8 +342,12 @@ void jeux(int grille[][GRILLE_HAUTEUR],Serpent *serpent,Pomme *pomme,Score *scor
 	  //}
 	  break;
 	case MLV_KEYBOARD_SPACE :
-	  // menu_pause();
-	  //choix_save_partie();
+	  // sauvegarde_score(score);
+	  // sauvegarde_partie(grille,serpent,pomme,i);
+	  /*for(int i=0;i<10;i++){
+	    printf("au momeent de la pause  MEILLEUR SCORE %d : %d\n",i,score->m_score[i]);
+	    }*/
+	  choix_save_partie();
 	  MLV_wait_keyboard(NULL,NULL,NULL);
 	  break;
 	default :
