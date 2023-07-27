@@ -24,7 +24,6 @@ typedef struct Tab_btn{
 
 int clicke(int x,int y,Tab_btn tab);
 void event2(Tab_btn tab);
-int clicke(int x,int y,Tab_btn tab);
 Bouton creer_bouton(int x, int y,int largeur,int hauteur,char *texte,Tab_btn *tab,void *fonction);void fond_image();
 void dessiner_bouton(Bouton *btn);
 void menu();
