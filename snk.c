@@ -36,24 +36,17 @@ void affichage_regle();
 void affichade_defaite(char *img);
 void fond_image();
 
+int main(){
+  srand(time(NULL));
+  init();
+  exit(0);  
+}
+
 void go(int j){
   int i;
-  /*  int grille[GRILLE_LARGEUR][GRILLE_HAUTEUR];
-      Pomme pomme;
-      Score score;
-      Serpent serpent;*/
-     
   MLV_clear_window(MLV_COLOR_BLACK);
   printf("GO \n");
   printf("j %d \n",j);
-  
-  /* for(i=0;i<10;i++){
-     printf("avant chargment dans go MEILLEUR SCORE %d : %d\n",i,score.m_score[i]);
-     }
-     for( i=0;i<10;i++){
-     score.m_score[i]=0;
-     printf("avant chargment dasn go %d m_score \n" , score.m_score[i]);
-     }   sauvegarde_score(&score);*/
   chargement_score(&score);
   for(i=0;i<10;i++){
     printf("apres chargment dans go MEILLEUR SCORE %d : %d\n",i,score.m_score[i]);
@@ -65,8 +58,6 @@ void go(int j){
     break;
   case 1:
     printf("continuer partie\n");
-    
-    // continuer_partie(grille,&serpent,&pomme,&score);
     choix_partie();
     break;
   case 2:
@@ -86,11 +77,6 @@ void go(int j){
 
 //sauvegarde partie
 void choix_sauv(int j){ 
-  /*
-    int grille[GRILLE_LARGEUR][GRILLE_HAUTEUR];
-    Pomme pomme;
-    Score score;
-    Serpent serpent;*/
   switch(j){
   case 0:
     printf("j : %d\n",j);
@@ -177,19 +163,6 @@ void continuer_partie(int grille[][GRILLE_HAUTEUR], Serpent *serpent,Pomme *pomm
   score->score=serpent->longueur-1;
   jeux(grille,serpent,pomme,score); 
 }
-
-
-
-
-
-int main(){
-  srand(time(NULL));
-  init();
-  exit(0);  
-}
-
-
-
 
 void init(){
   int x,y;
